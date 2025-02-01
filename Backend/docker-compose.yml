@@ -1,0 +1,36 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+      - redis
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/BharatFD
+      - REDIS_URL=redis://redis:6379
+      - GOOGLE_API_KEY=your-google-api-key
+      - PORT=3000
+    networks:
+      - backend
+  mongo:
+    image: mongo
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - backend
+  redis:
+    image: redis
+    volumes:
+      - redis_data:/data
+    networks:
+      - backend
+
+volumes:
+  mongo_data:
+  redis_data:
+
+networks:
+  backend:
+    driver: bridge
