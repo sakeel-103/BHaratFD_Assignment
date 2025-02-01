@@ -118,7 +118,7 @@ GET http://localhost:3000/api/faqs?lang=en
 This endpoint allows user to create a new FAQ (Frequently Asked Question) in the database. The request should include both the question and the answer, and can support multiple languages.
 
 = Example - 
--In this questions BharatFD is name of the peoject.
+-In this questions BharatFD is name of the project.
 
 {
   "question": {
